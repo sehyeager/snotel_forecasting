@@ -6,6 +6,7 @@
 
 import os
 import pandas as pd
+import numpy as np
 
 # Create output folder
 try:
@@ -61,7 +62,7 @@ df.replace(-999.0, np.nan, inplace = True)
 
 # Dropping columns full of null values (flag columns) as even the values not already nulled represent an invalid
 # measure of contitions according to the data dictionary.
-df.drop(columns = ['Wteq_amt_pct_med_flag', 'Prec_wytd_pct_avg_flag'], inplace = True)
+df.drop(columns = ['wteq_amt_pct_med_flag', 'prec_wytd_pct_avg_flag'], inplace = True)
 
 #list of all my features with nulls after dropping those two flag columns and changing all the codes to nulls as well
 features_to_fill = ['wteq_amt', 'wteq_med', 'wteq_amt_pct_med', 'prec_wytd_amt', 'prec_wytd_avg', 'prec_wytd_pctavg']
@@ -74,7 +75,7 @@ def null_filler(feature):
 
 	:return: The main dataframe with null values replaced by the yearly median for that feature.
 	"""
-    return df.groupby(by = df.index)[feature].transform(lambda x: x.fillna(x.median()))
+	return df.groupby(by = df.index)[feature].transform(lambda x: x.fillna(x.median()))
 
 #fills the nulls of every feature in my above list
 for feature in features_to_fill:
