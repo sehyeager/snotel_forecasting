@@ -75,11 +75,11 @@ def null_filler(feature):
 
 	:return: The main dataframe with null values replaced by the yearly median for that feature.
 	"""
-	return df.groupby(by = df.index)[feature].transform(lambda x: x.fillna(x.median()))
+	return df.groupby(by = df['yyyymmdd'])[feature].transform(lambda x: x.fillna(x.median()))
 
 #fills the nulls of every feature in my above list
 for feature in features_to_fill:
-    df[feature] = null_filler(feature)
+	df[feature] = null_filler(feature)
 
 # Saving final cleaned dataframe as a new csv
 df.to_csv('output/data_full.csv', index = False)
