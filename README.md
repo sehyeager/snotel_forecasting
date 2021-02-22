@@ -44,9 +44,7 @@ SNOTEL Snow/Precipitation Update Reports were gathered [here](https://wcc.sc.ego
 | Prec_wytd_pctavg       | Water Year to Date Precipitation as Percent of Average |
 | Prec_wytd_pct_avg_flag | Water Year to Date Precipitation Validity Code         |
 
--------------------------
-## Analysis
-
 
 -------------------------
 ## Conclusions
+Our models show that ARIMA models can be useful in predicting percipitation levels at SNOTEL sites. Our models were only tested for predictions on one day of the year, similar results should be seen when testing on other days of the year as well. We would recommend for further testing and use of the full data for every day of the year before implementing a model for short term predictions.
